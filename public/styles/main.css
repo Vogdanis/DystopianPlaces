@@ -1,0 +1,183 @@
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+#MainBody{
+    height:650px;
+    width:100%;
+    background-color: antiquewhite;
+}
+#map {
+    height: 100%;
+}
+.gm-map {
+
+}
+#controller{
+    height:110px;
+    width:100%;
+    position:absolute;
+}
+
+
+.button {
+    cursor: pointer;
+    line-height: 100%;
+    position: relative;
+}
+
+
+#buttonHypoxia{
+    margin-top:1%;
+    margin-left:1%;
+    height:100%;
+    width:32%;
+    background-color:cyan;
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+#buttonHeatmap{
+    margin-top:1%;
+    margin-left:1%;
+    height:100%;
+    width: calc(32% - 5px);
+    background-color: rgba(255, 65, 65, 0.993);
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+#buttonRadiation{
+    margin-top:1%;
+    margin-left:1%;
+    height:100%;
+    width: calc(32% - 5px);
+    background-color:greenyellow;
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+#buttonRadiationGeoLoc{
+    cursor: pointer;
+    margin-top:1%;
+    margin-left:1%;
+    height:100%;
+    width: calc(32% - 5px);
+    background-color:greenyellow;
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+
+.button:hover {
+    background-color: peachpuff !important;
+}
+
+.ButtonText{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    height: 20px;
+    margin: auto;
+}
+
+.ButtonTextGeoLoc{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    height: 20px;
+    margin: auto;
+}
+
+#ButtonTextGeoLoc{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    height: 20px;
+    margin: auto;
+}
+
+
+
+#buttonGeoLocAlone{
+    position: absolute;
+    left: 17%;
+    margin-top:1%;
+    margin-left:1%;
+    height:50%;
+    width: calc(64%  - 5px);
+    background-color:greenyellow;
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+#ButtonGetLocContainer{
+    width:100%;
+    height : 150px;
+    align-content: center;
+}
+
+#Settings{
+    background-color: white;
+    text-align: center;
+    width:80px;
+    height: 25px;
+    float:right;
+}
+#Settings:hover{
+    background-color: gray;
+}
+
+#batteryLife{
+    text-align: left;
+    margin-left:5px;
+    margin-top: 0px;
+    /* margin-left: 5px;
+    margin-right: 6px; */
+    height: 25px;
+    width: 300px;
+    float:left;
+    overflow: hidden;
+   }
+
+#buttonsArea{
+    background-color:white;
+    margin:0px;
+    width: 100%;
+    height: 25px;
+    overflow: hidden; /* will contain if #first is longer than #second */
+    font-size: 1.2em;
+
+}
+
+#HiddenSettings{
+    display: none;
+    height:80px;
+    width:100%;
+    background-color: gray;
+}
+
+#settingsDescription{
+
+    width:200px;
+    background-color: gray;
+    float:left;
+}
+#settingsValues{
+
+    width:300px;
+    float:left;
+}

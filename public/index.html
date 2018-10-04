@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script src="jquery-3.3.1.min.js"></script>
+      <link rel="icon" href="images/iconDyst.png">
+      <link rel="stylesheet" type="text/css" href="styles/main.css"> 
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxKqpsd8XAI4zJgjSQ0UE6J5GhHK039S8&callback=initMap"
+      type="text/javascript"></script>
+            <!-- <script src="js/socket.io.js"></script> -->
+            <!-- <script src="/socket.io/socket.io.js"></script> -->
+    
+    <script src="http://192.168.1.90:3000/socket.io/socket.io.js"></script>
+    <!-- <script>
+         var socket = io();
+    </script>  -->
+
+
+    <!-- <script src="http://localhost:3000/socket.io/socket.io.js"></script> -->
+    <script>
+        const socket = io('http://192.168.1.90:3000/');
+    </script>
+
+
+    <script src="js/addTouchSupport.js"></script>
+    <script type="text/javascript" src="js/hotspots.js"></script>
+    <script src="js/gmapStyles.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/geoLocationMode.js"></script>
+      <title>Dystopian Places</title>
+  </head>
+  <body>
+    <div id="MainBody">
+        <div id="map" class="gm-map"></div>
+        <div id="controller">
+            <div id="buttonsArea">
+                <!-- <div id="text">Water Hypoxia Zones</div>
+                <div id="text">Hover over the circles to see how affected the areas are.</div> -->
+                <!-- <div class="button" id="buttonHypoxia" onclick="SocketClicked('Show/Hide Hypoxia');" value="Socket"><div class="ButtonText">Show/Hide Hypoxia</div></div>
+                <div class="button" id="buttonHeatmap" onclick="SocketClicked('Show/Hide Heatmap');" value="Socket"><div class="ButtonText">Show/Hide Heatmap</div></div> -->
+                <!-- <div class="button" id="buttonRadiation" onclick="SocketClicked('Show/Hide Radiation');" value="Socket"><div class="ButtonText">Show/Hide Radiation</div></div> -->
+                <!-- <div class="button" id="buttonRadiationGeoLoc"  onclick="SocketClicked('Enable/Disable GeoLoc');" value="Socket">
+                    <div id="ButtonTextGeoLoc">Enable GeoLoc</div>
+                </div> -->
+               
+                
+               
+                <div id="Settings" onclick="SocketClicked('Show/Hide Settings')">Settings</div>
+
+                <div id="batteryLife">Battery life: 3.5v</div>
+                
+                <!-- <div id="ButtonGetLocContainer">
+                    <div class="button" id="buttonGeoLocAlone"  onclick="SocketClicked('Enable/Disable GeoLoc');" value="Socket">
+                        <div id="ButtonTextGeoLoc">Enable GeoLoc</div>
+                    </div>
+                </div> -->
+               
+                
+            </div>
+            <div id="HiddenSettings">
+                <div id="settingsDescription">
+                        Adjust servo position.
+                        <div>Servo go to position (0-180): </div>
+                        <div>Servo Min: </div>
+                        <div>Servo Max: </div>
+                </div>
+                <div id="settingsValues">
+                    <br>
+                    <div><input type="number" id="servoPosition"> <input type="submit" value="Send" onclick="SocketClicked('SendServoCalibration')"></div>
+                    <div><input type="number" id="servoMin"> </div>
+                    <div><input type="number" id="servoMax"> <input type="submit" value="Submit" onclick="SocketClicked('StoreServoPosition')"></div>
+                </div>
+         
+                
+            </div>
+        </div>
+    </div>
+  </body>
+</html>
