@@ -4,6 +4,7 @@
     "description": "my first socket.io app",
     "dependencies": {
         "express": "^4.15.2",
+        "fresh": "^0.5.2",
         "mqtt": "^2.17.0",
         "socket.io": "^2.1.0"
     }

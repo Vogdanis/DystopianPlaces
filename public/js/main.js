@@ -22,6 +22,7 @@ var mapOptions = {
     styles:styles
 }
 
+
 function initMap() {
     mapDiv = document.getElementById('map');
     map = new google.maps.Map(mapDiv, mapOptions);
@@ -409,8 +410,5 @@ socket.on('battery',function(msg){
   //console.log("Battery life: " + batteryLife);
   document.getElementById("batteryLife").innerHTML = batteryLife;
 });
-
-
-
 
 

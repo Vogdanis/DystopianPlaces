@@ -158,7 +158,7 @@ html, body {
     margin:0px;
     width: 100%;
     height: 25px;
-    overflow: hidden; /* will contain if #first is longer than #second */
+    overflow: block; /* will contain if #first is longer than #second */
     font-size: 1.2em;
 
 }
