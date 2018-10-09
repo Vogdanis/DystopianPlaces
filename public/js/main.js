@@ -10,6 +10,9 @@ var markersHeat = [];
 var markersRadiation = [];
 var geoLocToggleOnMap = true;
 var mainbody;
+var countDownDiv;
+var countDownDurationMax = 20;
+var countDown = 0;
 //EspGeoLoc
 var GeoLocLatitude = 0;
 var GeoLocLongtitude = 0;
@@ -22,7 +25,10 @@ var mapOptions = {
     center:Lyon,
     styles:styles
 }
-
+// Pollution range 10 - 42
+var pollutionLow = 20;
+var pollutionMedium = 25;
+var pollutionHigh = 35;
 
 function initMap() {
     mapDiv = document.getElementById('map');
@@ -33,8 +39,18 @@ function initMap() {
 
 window.onload = function(){
   mainbody = document.getElementById("MainBody");
+  countDownDiv = document.getElementById("CountDown");
   console.log("ParsingJson");
   JSONData(hotspots3vals);
+  setInterval(() => {
+      if(countDown > 0){
+        countDown--;
+        countDownDiv.innerHTML = countDown;
+        if(countDown === 0){
+          countDownFinished();
+        }
+      }
+    }, 1000);
 }
 
 // $(document).ready(function() {
@@ -89,98 +105,99 @@ function displayDeadZones(positionName,pollution, myLatLng,i){
   if(pollution[0] === 10){
       
     var icon = {
-      url: "../images/Circle10.png", // url
-      scaledSize: new google.maps.Size(pollution*1.6, pollution*1.6), // scaled size
-      origin: new google.maps.Point(0,0), // origin
-      anchor: new google.maps.Point(35, 35) // anchor
-    };
+            url: "../images/Circle10.png", // url
+            scaledSize: new google.maps.Size(pollution*1.6, pollution*1.6), // scaled size
+            origin: new google.maps.Point(0,0), // origin
+            anchor: new google.maps.Point(35, 35) // anchor
+          };
 
-    var markerHypoxia = new google.maps.Marker({
-    strokeColor: '#FF0000',
-    strokeOpacity: 0.8,
-    strokeWeight: 2,
-    fillColor: '#FF0000',
-    fillOpacity: 0.35,
-    position: myLatLng,
-    radius: pollution*4, 
-    icon: icon,
-    map: map,
-  });
+          var markerHypoxia = new google.maps.Marker({
+          strokeColor: '#FF0000',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#FF0000',
+          fillOpacity: 0.35,
+          position: myLatLng,
+          radius: pollution*4, 
+          icon: icon,
+          map: map,
+        });
+        markersHypoxia.push(markerHypoxia);
+        var infowindow = new google.maps.InfoWindow({
+          //content: String("Hypoxia level: " + pollution)
+          content: String(name)
+        });
+        markerHypoxia.addListener('click',function(){
+          //console.log("clicked");
+          SocketClicked(String("Hypoxia level: " + pollutionLow));
+          startCountdown();
+        });
+        google.maps.event.addListener(markerHypoxia, "mouseover", function() {
+          //console.log("Hovered " + positionName);
+          infowindow.open(map, markerHypoxia);
+        });
+        google.maps.event.addListener(markerHypoxia, "mouseout", function() {
+          //console.log("Hovered-out " + i);
+          infowindow.close(map, markerHypoxia);
+        });   
 
-  markersHypoxia.push(markerHypoxia);
-  var infowindow = new google.maps.InfoWindow({
-    //content: String("Hypoxia level: " + pollution)
-    content: String(name)
-  });
-  markerHypoxia.addListener('click',function(){
-    //console.log("clicked");
-    SocketClicked(String("Hypoxia level: " + pollution));
-  });
-  google.maps.event.addListener(markerHypoxia, "mouseover", function() {
-    //console.log("Hovered " + positionName);
-    infowindow.open(map, markerHypoxia);
-  });
-  google.maps.event.addListener(markerHypoxia, "mouseout", function() {
-    //console.log("Hovered-out " + i);
-    infowindow.close(map, markerHypoxia);
-  });   
+        google.maps.event.addDomListener(markerHypoxia,'touch', function(){
+          //SocketClicked(String("Hypoxia level: " + pollution));
+          window.alert('Map was clicked!');
+          SocketClicked(String("Hypoxia level: " + pollutionLow));
+          startCountdown();
+        });
+  }
 
-  google.maps.event.addDomListener(markerHypoxia,'touch', function(){
-    //SocketClicked(String("Hypoxia level: " + pollution));
-    window.alert('Map was clicked!');
-    SocketClicked(String("Hypoxia level: " + pollution));
-  });
-}
-
-    if(pollution[0] === 25){
-      
-        var icon = {
-          url: "../images/Circle25.png", // url
-          scaledSize: new google.maps.Size(pollution*1.6, pollution*1.6), // scaled size
-          origin: new google.maps.Point(0,0), // origin
-          anchor: new google.maps.Point(35, 35) // anchor
-        };
-
-        var markerHypoxia = new google.maps.Marker({
-        strokeColor: '#FF0000',
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        fillColor: '#FF0000',
-        fillOpacity: 0.35,
-        position: myLatLng,
-        radius: pollution*4, 
-        icon: icon,
-        map: map,
-      });
-
-      markersHypoxia.push(markerHypoxia);
-      var infowindow = new google.maps.InfoWindow({
-        //content: String("Hypoxia level: " + pollution)
-        content: String(name)
-      });
-      markerHypoxia.addListener('click',function(){
-        //console.log("clicked");
-        SocketClicked(String("Hypoxia level: " + pollution));
-      });
-      google.maps.event.addListener(markerHypoxia, "mouseover", function() {
-        //console.log("Hovered " + positionName);
-        infowindow.open(map, markerHypoxia);
-      });
-      google.maps.event.addListener(markerHypoxia, "mouseout", function() {
-        //console.log("Hovered-out " + i);
-        infowindow.close(map, markerHypoxia);
-      });   
-
-      google.maps.event.addDomListener(markerHypoxia,'touch', function(){
-        //SocketClicked(String("Hypoxia level: " + pollution));
-        window.alert('Map was clicked!');
-        SocketClicked(String("Hypoxia level: " + pollution));
-      });
-    }
-
-    if(pollution[0] === 40){
-      
+  if(pollution[0] === 25){
+    
       var icon = {
+        url: "../images/Circle25.png", // url
+        scaledSize: new google.maps.Size(pollution*1.6, pollution*1.6), // scaled size
+        origin: new google.maps.Point(0,0), // origin
+        anchor: new google.maps.Point(35, 35) // anchor
+      };
+
+      var markerHypoxia = new google.maps.Marker({
+      strokeColor: '#FF0000',
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: '#FF0000',
+      fillOpacity: 0.35,
+      position: myLatLng,
+      radius: pollution*4, 
+      icon: icon,
+      map: map,
+    });
+    markersHypoxia.push(markerHypoxia);
+    var infowindow = new google.maps.InfoWindow({
+      //content: String("Hypoxia level: " + pollution)
+      content: String(name)
+    });
+    markerHypoxia.addListener('click',function(){
+      //console.log("clicked");
+      SocketClicked(String("Hypoxia level: " + pollutionMedium));
+      startCountdown();
+    });
+    google.maps.event.addListener(markerHypoxia, "mouseover", function() {
+      //console.log("Hovered " + positionName);
+      infowindow.open(map, markerHypoxia);
+    });
+    google.maps.event.addListener(markerHypoxia, "mouseout", function() {
+      //console.log("Hovered-out " + i);
+      infowindow.close(map, markerHypoxia);
+    });   
+
+    google.maps.event.addDomListener(markerHypoxia,'touch', function(){
+      //SocketClicked(String("Hypoxia level: " + pollution));
+      window.alert('Map was clicked!');
+      SocketClicked(String("Hypoxia level: " + pollutionMedium));
+      startCountdown();
+    });
+  }
+
+  if(pollution[0] === 40){
+    var icon = {
         url: "../images/Circle40.png", // url
         scaledSize: new google.maps.Size(pollution*1.6, pollution*1.6), // scaled size
         origin: new google.maps.Point(0,0), // origin
@@ -198,7 +215,6 @@ function displayDeadZones(positionName,pollution, myLatLng,i){
       icon: icon,
       map: map,
     });
-
     markersHypoxia.push(markerHypoxia);
     var infowindow = new google.maps.InfoWindow({
       //content: String("Hypoxia level: " + pollution)
@@ -206,7 +222,8 @@ function displayDeadZones(positionName,pollution, myLatLng,i){
     });
     markerHypoxia.addListener('click',function(){
       //console.log("clicked");
-      SocketClicked(String("Hypoxia level: " + pollution));
+      SocketClicked(String("Hypoxia level: " + pollutionHigh));
+      startCountdown();
     });
     google.maps.event.addListener(markerHypoxia, "mouseover", function() {
       //console.log("Hovered " + positionName);
@@ -220,7 +237,8 @@ function displayDeadZones(positionName,pollution, myLatLng,i){
     google.maps.event.addDomListener(markerHypoxia,'touch', function(){
       //SocketClicked(String("Hypoxia level: " + pollution));
       window.alert('Map was clicked!');
-      SocketClicked(String("Hypoxia level: " + pollution));
+      SocketClicked(String("Hypoxia level: " + pollutionHigh));
+      startCountdown();
     });
   }
        
@@ -419,4 +437,10 @@ socket.on('battery',function(msg){
   document.getElementById("batteryLife").innerHTML = batteryLife;
 });
 
+function startCountdown(){
+  countDown = countDownDurationMax;
+}
 
+function countDownFinished(){
+   SocketClicked(String("Hypoxia level: " + 10));
+}
