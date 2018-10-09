@@ -9,6 +9,7 @@ var markersHypoxia = [];
 var markersHeat = [];
 var markersRadiation = [];
 var geoLocToggleOnMap = true;
+var mainbody;
 //EspGeoLoc
 var GeoLocLatitude = 0;
 var GeoLocLongtitude = 0;
@@ -31,6 +32,7 @@ function initMap() {
 
 
 window.onload = function(){
+  mainbody = document.getElementById("MainBody");
   console.log("ParsingJson");
   JSONData(hotspots3vals);
 }
@@ -343,11 +345,17 @@ function SocketClicked(msg){
   }
 
   if(msg === 'Show/Hide Settings'){
-    currentDisplay = document.getElementById("HiddenSettings").style.display;
-    if(currentDisplay === "none"){
-      document.getElementById("HiddenSettings").style.display = "block";
-    } else {
-        document.getElementById("HiddenSettings").style.display = "none";
+    // currentDisplay = document.getElementById("HiddenSettings").style.display;
+    // console.log(currentDisplay);
+    // if(currentDisplay != "block"){
+    //   document.getElementById("HiddenSettings").style.display = "block";
+    // } else {
+    //     document.getElementById("HiddenSettings").style.display = "none";
+    // }
+    if(mainbody.className != "Extended"){
+      mainbody.className = "Extended";
+    }else{
+      mainbody.className = "";
     }
   }
 

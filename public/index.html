@@ -33,7 +33,8 @@
   <body>
     <div id="MainBody">
         <div id="map" class="gm-map"></div>
-        <div id="controller">
+    </div>
+    <div id="controller">
             <div id="buttonsArea">
                 <!-- <div id="text">Water Hypoxia Zones</div>
                 <div id="text">Hover over the circles to see how affected the areas are.</div> -->
@@ -44,11 +45,12 @@
                     <div id="ButtonTextGeoLoc">Enable GeoLoc</div>
                 </div> -->
                
-                
-               
-                <div id="Settings" onclick="SocketClicked('Show/Hide Settings')">Settings</div>
-
                 <div id="batteryLife">Battery life: 3.5v</div>
+                <div id="CountDown">Seconds</div>
+                <div id="Settings" onclick="SocketClicked('Show/Hide Settings')">Settings</div>
+               
+
+                
                 
                 <!-- <div id="ButtonGetLocContainer">
                     <div class="button" id="buttonGeoLocAlone"  onclick="SocketClicked('Enable/Disable GeoLoc');" value="Socket">
@@ -58,6 +60,7 @@
                
                 
             </div>
+            
             <div id="HiddenSettings">
                 <div id="settingsDescription">
                         Adjust servo position.
@@ -75,6 +78,5 @@
                 
             </div>
         </div>
-    </div>
   </body>
 </html>
