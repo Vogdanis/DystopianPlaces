@@ -7,14 +7,14 @@ html, body {
 }
 
 #MainBody{
-    height: calc(100% - 20px);
+    height: calc(100% - 25px);
     width:100%;
     background-color: antiquewhite;
     
 }
 
 .Extended {
-   height: calc(100% - 100px) !important;
+   height: calc(100% - 105px) !important;
     
 }
 

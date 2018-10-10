@@ -11,7 +11,7 @@ var markersRadiation = [];
 var geoLocToggleOnMap = true;
 var mainbody;
 var countDownDiv;
-var countDownDurationMax = 20;
+var countDownDurationMax = 15;
 var countDown = 0;
 //EspGeoLoc
 var GeoLocLatitude = 0;
