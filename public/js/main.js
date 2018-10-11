@@ -23,7 +23,8 @@ var distanceServerEsp = 0;
 var mapOptions = {
     zoom: 3,
     center:Lyon,
-    styles:styles
+    styles:styles,
+    gestureHandling: 'greedy'
 }
 // Pollution range 10 - 42
 var pollutionLow = 20;
