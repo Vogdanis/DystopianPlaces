@@ -109,7 +109,7 @@ function displayDeadZones(positionName,pollution, myLatLng,i){
             url: "../images/Circle10.png", // url
             scaledSize: new google.maps.Size(pollution*1.6, pollution*1.6), // scaled size
             origin: new google.maps.Point(0,0), // origin
-            anchor: new google.maps.Point(35, 35) // anchor
+            anchor: new google.maps.Point(0, 0) // anchor
           };
 
           var markerHypoxia = new google.maps.Marker({
