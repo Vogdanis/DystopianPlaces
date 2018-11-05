@@ -16,14 +16,14 @@ html, body {
 }
 
 #MainBody{
-    height: calc(100% - 55px);
+    height: calc(100% - 80px);
     width:100%;
     background-color: antiquewhite;
     
 }
 
 .Extended {
-   height: calc(100% - 140px) !important;
+   height: calc(100% - 200px) !important;
     
 }
 
@@ -34,7 +34,7 @@ html, body {
 
 }
 #controller{
-    height:110px;
+    height:140px;
     width:100%;
     position:absolute;
 }
@@ -150,9 +150,11 @@ html, body {
 
 #Settings{
     text-align: center;
+    color: gray;
     width:80px;
     height: 25px;
     float:right;
+    padding-top: 25px;
 }
 #Settings:hover{
     background-color: black;
@@ -160,11 +162,13 @@ html, body {
 
 #batteryLife{
     text-align: left;
+    
     margin-left:5px;
-    margin-top: 0px;
+    margin-top: 15px;
     /* margin-left: 5px;
     margin-right: 6px; */
-    height: 25px;
+    font-size: 1.5em;
+    height: 50px;
     width: 300px;
     float:left;
     overflow: hidden;
@@ -174,7 +178,7 @@ html, body {
     background-color:white;
     margin:0px;
     width: 100%;
-    height: 25px;
+    height: 80px;
     overflow: block; /* will contain if #first is longer than #second */
     font-size: 1.2em;
     text-align: center;
@@ -200,11 +204,10 @@ html, body {
     float:left;
 }
 #CountDown{
-
-    height: 25px;
+    height: 50px;
     width: 50px;
     /* float:left; */
-
+    font-size: 2.5em;
     position: absolute;
     left: 0;
     right: 0;
