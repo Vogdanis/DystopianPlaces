@@ -26,10 +26,10 @@ var mapOptions = {
     styles:styles,
     gestureHandling: 'greedy'
 }
-// Pollution range 10 - 42
-var pollutionLow = 20;
-var pollutionMedium = 25;
-var pollutionHigh = 35;
+// Pollution range 10 - 30
+var pollutionLow = 10;
+var pollutionMedium = 20;
+var pollutionHigh = 30;
 
 function initMap() {
     mapDiv = document.getElementById('map');
@@ -443,5 +443,5 @@ function startCountdown(){
 }
 
 function countDownFinished(){
-   SocketClicked(String("Hypoxia level: " + 10));
+   SocketClicked(String("Hypoxia level: " + 0));
 }
